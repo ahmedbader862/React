@@ -3,8 +3,6 @@ import './ProductCard.css'
 import { useContext } from "react"
 import { auth } from "../../Contexts/AuthContext"
 import { addToCart } from "../Cart/CartService"
-import { addProduct } from "../../Redux/tolkit"
-import { useDispatch,  } from "react-redux";
 
 
 
@@ -14,17 +12,6 @@ export default function ProductCard({productInfo}) {
     const {images, title, price, category, ratingsAverage, id} = productInfo
 
     let {userToken} = useContext(auth)
-
-    const dispatch = useDispatch();
-
-    const handeladd = () => {
-        console.log(productInfo)
-        addProduct(productInfo)
-        dispatch(
-            addProduct(productInfo)
-        )
-
-    }
     return (
     <>
 
@@ -32,14 +19,8 @@ export default function ProductCard({productInfo}) {
         <div className="relative">
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
-
+        <i className="fa-regular fa-heart fav text-2xl"></i>
         </Link>
-
-     <button onClick={handeladd} >
-     <i className="fa-regular fa-heart fav text-2xl" 
-        >  </i>
-     </button>
-
         
         </div>
         <div className="p-3  ">
