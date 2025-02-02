@@ -1,0 +1,8 @@
+ul {
+    list-style: none !important;
+    text-decoration: none !important;
+  }
+  #navbar {
+    position: static;
+    top: 0;
+  }
