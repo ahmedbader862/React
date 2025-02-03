@@ -22,6 +22,10 @@ export default function ProductCard({productInfo}) {
     
     const isAdded = product.some((item) => item.id === productInfo.id);
 
+    const curentLange = useSelector((state) => state.lange.lange);
+
+    const  text = useSelector((state) => state.lange[curentLange]);
+
     const handleAddToWatchList = () => {
         if (isAdded) {
             
@@ -48,9 +52,9 @@ export default function ProductCard({productInfo}) {
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
         </Link>
-                                                 {/*$$$ add To Watch List $$$*/}
+                                                          {/*$$$ add To Watch List $$$*/}
         <button onClick={handleAddToWatchList}>       
-        <i className="fa-regular fa-heart fav text-2xl"></i>
+        <i className={`fa-regular fa-heart fav text-2xl ${isAdded ? 'bg-red-500' : ''}`}></i>
              </button>
 
         </div>
@@ -66,7 +70,8 @@ export default function ProductCard({productInfo}) {
                 
             </div>
             <div className="flex justify-around items-center mt-3">
-                    <button onClick={()=>addToCart(id,userToken)} type="button" className="text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Add</button>
+                    <button onClick={()=>addToCart(id,userToken)} type="button" className="text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                    {text.add}</button>
 
                         
                 </div>

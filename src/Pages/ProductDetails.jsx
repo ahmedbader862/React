@@ -6,8 +6,14 @@ import ReactImageGallery from 'react-image-gallery';
 import { addToCart } from '../Components/Cart/CartService';
 import { auth } from '../Contexts/AuthContext';
 
+import { useSelector } from 'react-redux';
 
 export default function ProductDetails() {
+
+    const curentLange = useSelector((state) => state.lange.lange);  
+
+    const  text = useSelector((state) => state.lange[curentLange]);  
+
     const [details , setDetails] = useState(null)
     let {id} = useParams();
     console.log(id);
@@ -56,6 +62,8 @@ export default function ProductDetails() {
 
             </div>
                     <button onClick={()=>addToCart(id,userToken)}  type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Add</button>
+                    <button onClick={()=>addToCart(id,userToken)} type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                        {text.add}</button>
         </div>
     </div>)}
     </>

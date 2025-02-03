@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-// import english from "./english"
-// import arabic from "./arabic"
-// import axios from "axios"
+import arabic from "./Arabic"
+import english from "./English"
 
 const initialState = {
   lange: 'en',
   products: [],
-//   en: english,
-//   ar:arabic ,
+  en: english,
+  ar:arabic ,
   // allMovie : []
 }
 

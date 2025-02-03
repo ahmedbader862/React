@@ -1,24 +1,26 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../assets/Imges/freshcart-logo.svg";
 import "./Navbar.css";
-import { useSelector } from "react-redux";
-import { auth } from "../../Contexts/AuthContext";
-import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { changeEn } from "../../Redux/tolkit";
 
 
 
 function Navbar() {
-  let { setLogin, isLogin } = useContext(auth)
-  let navigate = useNavigate()
-
-  const productLenth = useSelector((state) => state.lange.products.length);
+ const dispatch = useDispatch();
 
 
-  function logOut() {
-    localStorage.removeItem('userToken')
-    setLogin(null)
-    navigate('/login')
-  }
+ const curentLange = useSelector((state) => state.lange.lange);
+
+ const  text = useSelector((state) => state.lange[curentLange]);
+ 
+ const productLenth = useSelector((state) => state.lange.products.length);
+
+ const en = () => {
+  console.log(curentLange);
+  dispatch(changeEn(curentLange === "en" ? "ar" : "en"));
+};
+
   return (
     <>
       <nav className="bg-white dark:bg-gray-900 sticky w-full z-20 top-0 start-0 ">
@@ -31,19 +33,19 @@ function Navbar() {
 
 
             <div className="buttons flex gap-2">
-
-              {isLogin ? <li onClick={logOut}  type="button" className=" cursor-pointer list-none text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</li> : <>
-
-                <Link to={'/login'} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  log in  </Link>
-
-                <Link to={"/register"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Sign up
-                </Link></>}
-
-              <Link to={"/watchlist"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                watchlist {productLenth}
-              </Link>
+            
+            <Link to={'/login'} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+           {text.signIn}  </Link>
+           
+            <Link to={"/register"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              {text.signUp}
+            </Link>
+            
+            <Link to={"/watchlist"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              {text.wishlist} {productLenth}
+            </Link>
+            <button onClick={en} className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              {curentLange}</button>
 
             </div>
             <button
@@ -63,22 +65,22 @@ function Navbar() {
             <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
                 <Link to="/" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black-500">
-                  Home
+                  {text.home}
                 </Link>
               </li>
               <li>
-                <Link to="/products" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
-                  Products
+                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                  {text.Products}
                 </Link>
               </li>
               <li>
-                <Link to="/categories" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
-                  Categories
+                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                  {text.Categories}
                 </Link>
               </li>
               <li>
-                <Link to="/Brands" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
-                  Brands
+                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                  {text.Brands}
                 </Link>
               </li>
             </ul>
