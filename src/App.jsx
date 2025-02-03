@@ -10,12 +10,9 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart/Cart";
-<<<<<<< HEAD
 import ProductDetails from "./Pages/ProductDetails";
 
-=======
 import WatchList from "./Pages/watchlist";
->>>>>>> redux
 
 function App() {
   return (
