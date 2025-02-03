@@ -69,13 +69,8 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-<<<<<<< HEAD
                 <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
                   {text.Products}
-=======
-                <Link to="/products" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
-                  Products
->>>>>>> 8f2a0a45125da7cf37c8f4d8ac9fc115f4fe65c9
                 </Link>
               </li>
               <li>
@@ -84,13 +79,8 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-<<<<<<< HEAD
                 <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
                   {text.Brands}
-=======
-                <Link to="/Brands" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
-                  Brands
->>>>>>> 8f2a0a45125da7cf37c8f4d8ac9fc115f4fe65c9
                 </Link>
               </li>
             </ul>
