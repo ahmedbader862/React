@@ -28,11 +28,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
-<<<<<<< HEAD
           <Route path="/Product/:id" element={<ProductDetails />} />
-=======
           <Route path="/watchlist" element={< WatchList/>} />
->>>>>>> redux
 
         </Routes>
       </Router>
