@@ -55,7 +55,7 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                <Link to="/products" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
                   Products
                 </Link>
               </li>
@@ -65,7 +65,7 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                <Link to="/Brands" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
                   Brands
                 </Link>
               </li>
