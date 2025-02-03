@@ -3,6 +3,8 @@ import './ProductCard.css'
 import { useContext } from "react"
 import { auth } from "../../Contexts/AuthContext"
 import { addToCart } from "../Cart/CartService"
+import { useDispatch, useSelector } from "react-redux"
+import { addProduct, removeproduct } from "../../Redux/tolkit"
 
 
 
@@ -12,6 +14,31 @@ export default function ProductCard({productInfo}) {
     const {images, title, price, category, ratingsAverage, id} = productInfo
 
     let {userToken} = useContext(auth)
+
+    const disbatch = useDispatch()
+    
+    const product = useSelector((state) => state.lange.products);
+    
+    const isAdded = product.some((item) => item.id === productInfo.id);
+
+    const handleAddToWatchList = () => {
+        if (isAdded) {
+            
+            removeFromWatchList(); 
+
+        } else {
+
+            addToWatchList(); 
+        }
+    };
+
+    const addToWatchList = () => {
+        disbatch(addProduct(productInfo))
+    }
+    const removeFromWatchList = () => {
+        disbatch(removeproduct(productInfo.id))
+    }
+
     return (
     <>
 
@@ -19,9 +46,12 @@ export default function ProductCard({productInfo}) {
         <div className="relative">
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
-        <i className="fa-regular fa-heart fav text-2xl"></i>
         </Link>
-        
+                                                 {/*$$$ add To Watch List $$$*/}
+        <button onClick={handleAddToWatchList}>       
+        <i className="fa-regular fa-heart fav text-2xl"></i>
+             </button>
+
         </div>
         <div className="p-3  ">
             <h3 className="text-primary">{category.name}</h3>

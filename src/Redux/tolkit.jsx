@@ -25,8 +25,9 @@ export const langeSlice = createSlice({
       addProduct: (state, action) => { state.products = [...state.products, action.payload] },
 
 
-      removeproduct: (state, action) => { state.products = state.products.filter(product => product.id !== action.payload) },
-
+      removeproduct: (state, action) => {
+        state.products = state.products.filter(product => product.id !== action.payload);
+    },
       
 
     },

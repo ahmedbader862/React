@@ -10,8 +10,12 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart/Cart";
+<<<<<<< HEAD
 import ProductDetails from "./Pages/ProductDetails";
 
+=======
+import WatchList from "./Pages/watchlist";
+>>>>>>> redux
 
 function App() {
   return (
@@ -27,7 +31,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+<<<<<<< HEAD
           <Route path="/Product/:id" element={<ProductDetails />} />
+=======
+          <Route path="/watchlist" element={< WatchList/>} />
+>>>>>>> redux
 
         </Routes>
       </Router>
