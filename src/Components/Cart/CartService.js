@@ -11,7 +11,7 @@ export async function addToCart(productId,token){
         }})
 
         console.log(data);
-        toast.success(data.message, {
+        toast.success("Product added to your cart", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: true,
