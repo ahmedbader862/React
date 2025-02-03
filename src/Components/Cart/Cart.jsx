@@ -72,7 +72,7 @@ export default function Cart() {
       </Helmet>
 
       {cart ? <div className='mt-24' >
-        <h1 className="mb-10 text-center text-2xl font-bold">Cart Items ({cart.numOfCartItems})</h1>
+        <h1 className="mb-10 text-center text-2xl  font-bold">Cart Items ({cart.numOfCartItems})</h1>
         <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
           <div className="rounded-lg md:w-2/3">
 
@@ -98,13 +98,13 @@ export default function Cart() {
               <p className="text-lg font-bold">Total</p>
               <div className="">
                 <p className="mb-1 text-lg font-bold">{cart?.data.totalCartPrice} EGP</p>
-                <p className="text-sm text-gray-700">including VAT</p>
+                <p className="text-sm my-3 text-gray-700">including VAT</p>
               </div>
             </div>
-            <Link to={'/shippingaddress/' + cart?.data._id} className="mt-6 w-full block text-center rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</Link>
+            <Link to={'/shippingaddress/' + cart?.data._id} className="text-black mt-5 pr-30 pl-30 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Checkout</Link>
           </div>
         </div>
-        <button onClick={deleteUserCart} className='text-red-500 border-2 border-red-500 block ms-auto py-2 px-4 mb-8 mt-4'> Clear cart</button>
+        <button onClick={deleteUserCart} className='text-red-500 border-2 m-auto border-red-500 block ms-auto py-2 px-4 mb-8 mt-4'> Clear cart</button>
 
       </div> : <h1 className='text-black mt-28 text-center font-bold'>No products in your cart</h1>}</>
 

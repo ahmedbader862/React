@@ -91,7 +91,7 @@ export default function CartProduct({ product, setCart, cart }) {
                         <button disabled={product.count == 1 || isDecreaseLoading} onClick={() => updateCount(product.product._id, product.count - 1)} className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 disabled:cursor-not-allowed hover:bg-blue-500 hover:text-blue-50">
                             {isDecreaseLoading ? <i className='fas fa-spinner fa-spin'></i> : '-'}
                         </button>
-                        <input onBlur={() => product.count !== productCount && updateCount(product.product._id, productCount)} onChange={(e) => setProductCount(e.target.value)} className="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value={productCount} min="1" />
+                        <input onBlur={() => product.count !== productCount && updateCount(product.product._id, productCount)} onChange={(e) => setProductCount(e.target.value)} className="h-8 w-8  bg-white text-center text-xs outline-none" type="number" value={productCount} min="1" />
                         <button disabled={isIncreaseLoading} onClick={() => updateCount(product.product._id, product.count + 1)} className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
                             {isIncreaseLoading ? <i className='fas fa-spinner fa-spin'></i> : '+'}
                         </button>
