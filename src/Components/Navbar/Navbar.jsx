@@ -3,23 +3,37 @@ import logo from "../../assets/Imges/freshcart-logo.svg";
 import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { changeEn } from "../../Redux/tolkit";
+import { useState } from "react";
+
 
 
 
 function Navbar() {
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
+  
 
- const curentLange = useSelector((state) => state.lange.lange);
+  const [isLogin, setIsLogin] = useState(false);
+  const curentLange = useSelector((state) => state.lange.lange);
 
- const  text = useSelector((state) => state.lange[curentLange]);
- 
- const productLenth = useSelector((state) => state.lange.products.length);
+  const text = useSelector((state) => state.lange[curentLange]);
 
- const en = () => {
-  console.log(curentLange);
-  dispatch(changeEn(curentLange === "en" ? "ar" : "en"));
-};
+  const productLenth = useSelector((state) => state.lange.products.length);
+
+  const en = () => {
+    console.log(curentLange);
+    dispatch(changeEn(curentLange === "en" ? "ar" : "en"));
+
+   
+
+  };
+
+  let navigate = useNavigate();
+  function logOut() {
+    localStorage.removeItem('userToken')
+    setIsLogin(null)
+    navigate('/login')
+  }
 
   return (
     <>
@@ -33,19 +47,24 @@ function Navbar() {
 
 
             <div className="buttons flex gap-2">
-            
-            <Link to={'/login'} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-           {text.signIn}  </Link>
-           
-            <Link to={"/register"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              {text.signUp}
-            </Link>
-            
-            <Link to={"/watchlist"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              {text.wishlist} {productLenth}
-            </Link>
-            <button onClick={en} className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-              {curentLange}</button>
+
+              {isLogin ? <>
+
+                <Link to={'/login'} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  {text.signIn}  </Link>
+
+                <Link to={"/register"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  {text.signUp}
+                </Link></>
+                
+                : <li onClick={logOut} className="list-none text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</li>}
+
+
+              <Link to={"/watchlist"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                {text.wishlist} {productLenth}
+              </Link>
+              <button onClick={en} className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                {curentLange}</button>
 
             </div>
             <button
@@ -74,7 +93,7 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
+                <Link to='/categories' className="block py-2 hover:text-black px-3 text-white bg-gray-700 rounded-sm md:bg-transparent md:text-gray-700 md:p-0 md:dark:text-black">
                   {text.Categories}
                 </Link>
               </li>
@@ -86,7 +105,7 @@ function Navbar() {
             </ul>
           </div>
 
-         {isLogin &&  <Link to="/cart" className="cart md:order-3 relative">
+          {isLogin && <Link to="/cart" className="cart md:order-3 relative">
             <i className="text-black hover:text-black text-2xl mt-2 fa-solid fa-cart-shopping"></i>
             <span className="bg-black text-white h-4 w-4 font-bold text-sm flex justify-center items-center rounded-full absolute pb-0.5 top-0 right-0 translate-x-1/2 -translate-y-1/2">
               0
