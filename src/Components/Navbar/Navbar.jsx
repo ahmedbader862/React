@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/Imges/freshcart-logo.svg";
 import "./Navbar.css";
+import { useSelector } from "react-redux";
 
 
 
 function Navbar() {
+
+ const productLenth = useSelector((state) => state.lange.products.length);
   
   return (
     <>
@@ -26,6 +29,10 @@ function Navbar() {
               Sign up
             </Link>
             
+            <Link to={"/watchlist"} type="button" className="text-white bg-black hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              watchlist {productLenth}
+            </Link>
+
             </div>
             <button
               data-collapse-toggle="navbar-sticky"

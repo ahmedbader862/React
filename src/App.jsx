@@ -8,7 +8,7 @@ import Register from "./Components/Register/Register";
 // import AuthContextProvider from "./Contexts/AuthContext";
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart/Cart";
-
+import WatchList from "./Pages/watchlist";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/watchlist" element={< WatchList/>} />
 
         </Routes>
       </Router>
