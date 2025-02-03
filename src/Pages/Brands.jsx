@@ -27,7 +27,7 @@ export default function Brands() {
   
     return (
         <>
-    <section className='mb-5 mt-16'>
+    <section className=' container mx-auto mb-5 mt-16'>
         
         <div className='grid grid-cols-12 gap-4 mt-16'>
             {brands ? brands.map((brand)=>(
