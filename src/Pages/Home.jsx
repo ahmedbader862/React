@@ -80,26 +80,6 @@ export default function Home() {
       <Welcome />
       <SearchBar onSearch={handleSearch} />
 
-<<<<<<< HEAD
-        {/* Styled Pagination */}
-        <div className="d-flex align-items-center justify-center mt-10">
-          <div className="pagination text-center">
-            <button
-              className="btn btn-warning mx-2"
-              onClick={() => setPage(page - 1)}
-              disabled={page === 1}
-            >
-              {text.previous}
-            </button>
-            <span className="mx-3">{text.page} {page} {text.of} {totalPages}</span>
-            <button
-              className="btn btn-warning mx-2"
-              onClick={() => setPage(page + 1)}
-              disabled={page === totalPages}
-            >
-              {text.next}
-            </button>
-=======
       <div className="my-4">
         <label htmlFor="category" className="mr-2">Filter by Category:</label>
         <select
@@ -150,30 +130,30 @@ export default function Home() {
             {displayedProducts.map((product) => (
               <ProductCard key={product.id} productInfo={product} />
             ))}
->>>>>>> 8f2a0a45125da7cf37c8f4d8ac9fc115f4fe65c9
           </div>
         ) : (
           <Loading />
         )}
       </div>
 
-      <div className="d-flex align-items-center justify-center mt-10">
-        <div className="pagination text-center">
-          <button
-            className="btn btn-warning mx-2"
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          <span className="mx-3">Page {page} of {totalPages}</span>
-          <button
-            className="btn btn-warning mx-2"
-            onClick={() => setPage(page + 1)}
-            disabled={page === totalPages}
-          >
-            Next
-          </button>
+        {/* Styled Pagination */}
+        <div className="d-flex align-items-center justify-center mt-10">
+          <div className="pagination text-center">
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              {text.previous}
+            </button>
+            <span className="mx-3">{text.page} {page} {text.of} {totalPages}</span>
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages}
+            >
+              {text.next}
+            </button>
         </div>
       </div>
     </div>
