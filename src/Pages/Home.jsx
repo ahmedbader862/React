@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="container w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
+      <div className="container mx-auto w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
         <Welcome />
         <SearchBar onSearch={handleSearch} /> {/* Add Search Bar */}
         <div className="products">

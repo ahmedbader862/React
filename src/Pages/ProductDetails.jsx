@@ -3,11 +3,15 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Loading from '../Components/Loading';
 import ReactImageGallery from 'react-image-gallery';
+import { addToCart } from '../Components/Cart/CartService';
+import { auth } from '../Contexts/AuthContext';
+
 
 export default function ProductDetails() {
     const [details , setDetails] = useState(null)
     let {id} = useParams();
     console.log(id);
+    let {userToken} = useContext(auth)
 
     async function getProductDetails(){
         let {data } =await axios.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
@@ -51,7 +55,7 @@ export default function ProductDetails() {
                 </span>
 
             </div>
-                    <button onClick={()=>addToCart(id,userToken)} type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Add</button>
+                    <button onClick={()=>addToCart(id,userToken)}  type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Add</button>
         </div>
     </div>)}
     </>

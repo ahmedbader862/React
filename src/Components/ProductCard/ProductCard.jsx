@@ -14,6 +14,7 @@ export default function ProductCard({productInfo}) {
     const {images, title, price, category, ratingsAverage, id} = productInfo
 
     let {userToken} = useContext(auth)
+    
 
     const disbatch = useDispatch()
     
