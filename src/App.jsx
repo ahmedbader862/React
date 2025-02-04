@@ -17,6 +17,7 @@ import Products from "./Pages/Products";
 import Brands from "./Components/Brands/Brands";
 import BrandProducts from "./Components/Brands/BrandsProducts";
 import Admin from "./Pages/Admin";
+// import ShippingAddress from "./Components/ShippingAdress/ShippingAdress";
 
 
 function App() {
@@ -39,6 +40,12 @@ function App() {
           <Route path="/products/product/:id" element={<ProductDetails />} />
           <Route path="/products" element={<Products/>} />
           <Route path="/Brands" element={<Brands/>} />
+          {/* <Route path="/shippingaddress/:cartId" element={<ShippingAddress/>} /> */}
+         
+         
+
+
+          
 
         </Routes>
       </Router>
