@@ -14,7 +14,7 @@ const english = {
     confirmPassword: "Confirm Password",
     phoneNumber: "Phone Number",
     submit : "Submit",
-    registerNow: "Register Now :",
+    registerNow: "Register Now ",
     forgetPassword: "Forget Password",
     registerMS: "Don't have an account?",
     next: "Next",  

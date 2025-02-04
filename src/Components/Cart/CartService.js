@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
 
+
 export async function addToCart(productId) {
   try {
     let { data } = await axios.post(

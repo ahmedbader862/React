@@ -14,7 +14,9 @@ import WatchList from "./Pages/watchlist";
 import Categories from "./Categories/Categories";
 import CategoryProducts from "./Categories/CategoryProducts"; // Import the new component
 import Products from "./Pages/Products";
-import Brands from "./Pages/Brands";
+import Brands from "./Components/Brands/Brands";
+import BrandProducts from "./Components/Brands/BrandsProducts";
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
           <Route path="/watchlist" element={<WatchList />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:categoryId/:categoryName" element={<CategoryProducts />} /> {/* Add this route */}
+          <Route path="/brands/:brandId/:brandName" element={<BrandProducts></BrandProducts>} />
           <Route path="/products/product/:id" element={<ProductDetails />} />
           <Route path="/products" element={<Products/>} />
           <Route path="/Brands" element={<Brands/>} />

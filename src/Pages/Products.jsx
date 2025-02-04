@@ -21,7 +21,7 @@ export default function Products() {
 
   return (
     <>
-    <div className="container px-10">
+    <div className="container mx-auto px-10">
         
     {products ? (<div className='grid grid-cols-12 gap-4 mt-16'>
             { products.map((product)=>(

@@ -40,8 +40,8 @@ export default function ProductDetails() {
   return (
     <>
     {details === null ? (<Loading/>
-    ):(<div className='grid items-center grid-cols-12 mt-10 pb-[240px] pt-[10px] pr-[35px] pl-[35px]'>
-        <div className='col-span-4'>
+    ):(<div className='container mx-auto  grid items-center grid-cols-12 mt-10 pb-[240px] pt-[10px] pr-[35px] pl-[35px]'>
+        <div className='col-span-4 mx-2'>
             <ReactImageGallery items={imageItems}
             showNav={false}
             showFullscreenButton={false}
@@ -61,7 +61,7 @@ export default function ProductDetails() {
                 </span>
 
             </div>
-                    <button onClick={()=>addToCart(id,userToken)}  type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">Add</button>
+                    
                     <button onClick={()=>addToCart(id,userToken)} type="button" className="mt-5 w-full text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                         {text.add}</button>
         </div>
