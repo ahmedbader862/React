@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+
 import CartProduct from './CartProduct'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import Loading from '../Loading'
-import Swal from 'sweetalert2'
 
 
 
@@ -35,36 +35,23 @@ export default function Cart() {
 
 
   async function deleteUserCart() {
-    // Show confirmation dialog
-    const result = await Swal.fire({
-        title: 'Are you sure?',
-        text: 'You are about to clear your entire cart. This action cannot be undone!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, clear it!',
-        cancelButtonText: 'Cancel',
-    });
+    setIsLoading(true)
+    await axios.delete('https://ecommerce.routemisr.com/api/v1/cart/', {
+      headers: {
 
-    // If user confirms, proceed with clearing the cart
-    if (result.isConfirmed) {
-        setIsLoading(true); // Show loading indicator
-        try {
-            await axios.delete('https://ecommerce.routemisr.com/api/v1/cart/', {
-                headers: {
-                    token: localStorage.getItem('userToken'),
-                },
-            });
-            setCart(null); // Clear the cart in the state
-        } catch (error) {
-            // Handle errors if needed
-            console.error('Failed to clear cart:', error);
-        } finally {
-            setIsLoading(false); // Hide loading indicator
-        }
-    }
-}
+        token: localStorage.getItem('userToken')
+      }
+    }).finally(() => {
+      setIsLoading(false)
+      setCart(null)
+    })
+
+
+
+
+
+
+  }
 
 
 
