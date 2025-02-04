@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { Bounce } from 'react-toastify'
 import Loading from '../Loading'
-import Swal from 'sweetalert2'
+
 
 
 export default function CartProduct({ product, setCart, cart }) {
@@ -14,50 +14,33 @@ export default function CartProduct({ product, setCart, cart }) {
 
     // Function to remove product from cart
     async function removeCart(productId) {
-        // Show confirmation dialog
-        const result = await Swal.fire({
-            title: 'Are you sure?',
-            text: 'You are about to remove this product from your cart. This action cannot be undone!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, remove it!',
-            cancelButtonText: 'Cancel',
-        });
-    
-        // If user confirms, proceed with removal
-        if (result.isConfirmed) {
-            setIsRemoving(true); // Show loading for removal
-            try {
-                let { data } = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`, {
-                    headers: {
-                        token: localStorage.getItem('userToken'),
-                    },
-                });
-                setCart(data);
-    
-                // Show success message
-               
-            } catch (error) {
-                // Show error message
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Failed to remove product',
-                    text: 'An error occurred while removing the product. Please try again.',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    position: 'top-end',
-                    toast: true,
-                    background: '#f0f0f0',
-                    iconColor: '#dc3545',
-                    timerProgressBar: true,
-                });
-            } finally {
-                setIsRemoving(false); // Hide loading after completion
-            }
+        setIsRemoving(true)  // Show loading for removal
+        try {
+            let { data } = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`, {
+                headers: {
+                    token: localStorage.getItem('userToken')
+                }
+            })
+            setCart(data)
+
+            toast.success("Product has been removed successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        } catch (error) {
+            toast.error("Failed to remove product.")
+        } finally {
+            setIsRemoving(false)  // Hide loading after completion
         }
     }
+
     // Function to update product count in cart
     async function updateCount(productId, newCount) {
         if (newCount === product.count || newCount < 1) return  // Prevent unnecessary requests
