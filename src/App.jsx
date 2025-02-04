@@ -16,6 +16,7 @@ import CategoryProducts from "./Categories/CategoryProducts"; // Import the new 
 import Products from "./Pages/Products";
 import Brands from "./Components/Brands/Brands";
 import BrandProducts from "./Components/Brands/BrandsProducts";
+import Admin from "./Pages/Admin";
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+          
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<Cart />} />
