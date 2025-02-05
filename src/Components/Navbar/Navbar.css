@@ -5,4 +5,10 @@ ul {
   #navbar {
     position: static;
     top: 0;
+    
+  }
+
+
+  .clr{
+    background-color: #eaeaea;
   }

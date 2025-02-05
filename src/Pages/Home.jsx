@@ -6,8 +6,14 @@ import Welcome from "../Components/Navbar/Welcome/Welcome";
 import SearchBar from "../Components/SearchBar/SearchBar";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+
+  const curentLange = useSelector((state) => state.lange.lange);  
+
+  const  text = useSelector((state) => state.lange[curentLange]);  
+
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [page, setPage] = useState(1);
@@ -70,9 +76,10 @@ export default function Home() {
   const displayedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
 
   return (
-    <div className="container w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
-      <Welcome />
-      <SearchBar onSearch={handleSearch} />
+    <>
+      <div className="container mx-auto w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
+        <Welcome />
+    <SearchBar onSearch={handleSearch} /> {/* Add Search Bar */}
 
       <div className="my-4">
         <label htmlFor="category" className="mr-2">Filter by Category:</label>
@@ -130,25 +137,28 @@ export default function Home() {
         )}
       </div>
 
-      <div className="d-flex align-items-center justify-center mt-10">
-        <div className="pagination text-center">
-          <button
-            className="btn btn-warning mx-2"
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          <span className="mx-3">Page {page} of {totalPages}</span>
-          <button
-            className="btn btn-warning mx-2"
-            onClick={() => setPage(page + 1)}
-            disabled={page === totalPages}
-          >
-            Next
-          </button>
+        {/* Styled Pagination */}
+        <div className="d-flex align-items-center justify-center mt-10">
+          <div className="pagination text-center">
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              {text.previous}
+            </button>
+            <span className="mx-3">{text.page} {page} {text.of} {totalPages}</span>
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages}
+            >
+              {text.next}
+            </button>
         </div>
       </div>
-    </div>
+  </div>
+    </>
   );
 }
+
