@@ -82,14 +82,14 @@ export default function Home() {
     <SearchBar onSearch={handleSearch} /> {/* Add Search Bar */}
 
       <div className="my-4">
-        <label htmlFor="category" className="mr-2">Filter by Category:</label>
+        <label htmlFor="category" className="mr-2">{text.FilterbyCategory}</label>
         <select
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
           className="p-2 border rounded"
         >
-          <option value="">All Categories</option>
+          <option value="">{text.AllCategories}</option>
           {categories.map((category) => (
             <option key={category} value={category}>{category}</option>
           ))}
@@ -97,7 +97,7 @@ export default function Home() {
       </div>
 
       <div className="my-4">
-        <label htmlFor="minPrice" className="mr-2">Min Price:</label>
+        <label htmlFor="minPrice" className="mr-2">{text.MinPrice}:</label>
         <input
           id="minPrice"
           type="number"
@@ -110,7 +110,7 @@ export default function Home() {
           }
           className="p-2 border rounded mr-4"
         />
-        <label htmlFor="maxPrice" className="mr-2">Max Price:</label>
+        <label htmlFor="maxPrice" className="mr-2">{text.MaxPrice}:</label>
         <input
           id="maxPrice"
           type="number"

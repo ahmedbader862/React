@@ -21,5 +21,13 @@ const english = {
     previous: "Previous",
     page: "Page", 
     of: "of",
+    FilterbyCategory: "Filter by Category",
+    AllCategories: "All Categories",
+    MinPrice: "Min Price",
+    MaxPrice: "Max Price",
+    AllCategories: "All Categories",
+    AllBrands: "All Brands",
+    Productsby: "Products by",
+    ProductsIn: "Products in",
 }
 export default english
