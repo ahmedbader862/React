@@ -3,9 +3,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import Loading from "../Loading";
+import { useSelector } from "react-redux";
 
 
 export default function Brands() {
+
+  const curentLange = useSelector((state) => state.lange.lange);  
+
+  const  text = useSelector((state) => state.lange[curentLange]);  
   const [brands, setBrands] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -40,7 +45,7 @@ export default function Brands() {
       </Helmet>
 
       <div className="container mx-auto my-5 px-4">
-        <h1 className="mt-10 text-center text-3xl font-bold text-gray-800">All Brands</h1>
+        <h1 className="mt-10 text-center text-3xl font-bold text-gray-800">{text.AllBrands}</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
           {brands.map((brand) => (

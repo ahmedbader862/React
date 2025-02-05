@@ -3,9 +3,15 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import Loading from "../Components/Loading";
+import { useSelector } from "react-redux";
 
 
 export default function Categories() {
+
+  const curentLange = useSelector((state) => state.lange.lange);  
+
+  const  text = useSelector((state) => state.lange[curentLange]);  
+
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,7 +47,7 @@ export default function Categories() {
       </Helmet>
 
       <div className="container mx-auto my-5 px-4">
-        <h1 className="mt-10 text-center text-3xl font-bold text-gray-800">All Categories</h1>
+        <h1 className="mt-10 text-center text-3xl font-bold text-gray-800">{text.AllCategories}</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
           {categories.map((cat) => (

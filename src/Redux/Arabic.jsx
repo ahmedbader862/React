@@ -21,6 +21,14 @@ const arabic = {
     previous: "السابق",
     page: "صفحه",
     of: "من",
+    FilterbyCategory: "التصفية حسب الفئة",
+    AllCategories: "كل الفئات",
+    MinPrice: "الحد الادني",
+    MaxPrice: "الحد الاقصي",
+    AllCategories: "كل الفئات",
+    AllBrands: "كل الماركات",
+    Productsby: "المنتجات حسب",
+    ProductsIn: "المنتجات في",
 
 
    

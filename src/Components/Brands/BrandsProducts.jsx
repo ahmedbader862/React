@@ -5,8 +5,13 @@ import axios from "axios";
 import Breadcrumb from "./BreadCrumbBrand";
 import { Helmet } from "react-helmet";
 import Loading from "../Loading";
+import { useSelector } from "react-redux";
 
 export default function BrandProducts() {
+
+  const curentLange = useSelector((state) => state.lange.lange);  
+
+  const  text = useSelector((state) => state.lange[curentLange]);  
   const { brandId, brandName } = useParams();  // Get brandId and brandName from URL params
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +43,7 @@ export default function BrandProducts() {
       </Helmet>
       <Breadcrumb brandId={brandId} brandName={brandName} />
 
-      <h1 className="text-center text-3xl font-bold text-gray-800 mt-4">Products by {brandName}</h1>
+      <h1 className="text-center text-3xl font-bold text-gray-800 mt-4">{text.Productsby} {brandName}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10">
         {products.length > 0 ? (
           products.map((product) => (
