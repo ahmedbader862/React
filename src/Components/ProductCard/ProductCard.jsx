@@ -47,7 +47,7 @@ export default function ProductCard({productInfo}) {
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
         </Link>
-                                                 {/*$$$ add To Watch List $$$*/}
+        {/*$$$ add To Watch List $$$*/}
         <button onClick={handleAddToWatchList}>       
         <i className="fa-regular fa-heart fav text-2xl"></i>
              </button>
