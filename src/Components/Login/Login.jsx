@@ -20,6 +20,8 @@ export default function Login() {
 
   const  text = useSelector((state) => state.lange[curentLange]);  
 
+  const [admin, setAdmin] = useState(false) ;
+   
   let navigate = useNavigate()
   let { setLogin } = useContext(auth)
   // let [Loading, setLoading] = useState(false)
@@ -29,6 +31,7 @@ export default function Login() {
 function handleLogin(values) {
     if (values.email === "admin@gmail.com" && values.password === "A12345") {  // اصحالي يا برنس
         navigate('/admin');
+        setAdmin(true)
    
       }
     

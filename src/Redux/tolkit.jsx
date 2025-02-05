@@ -7,6 +7,7 @@ const initialState = {
   products: [],
   en: english,
   ar:arabic ,
+  
   // allMovie : []
 }
 
