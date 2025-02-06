@@ -10,13 +10,13 @@ import { useSelector } from 'react-redux'
 
 
 export default function Cart() {
-  const curentLange = useSelector((state) => state.lange.lange);  
+  const curentLange = useSelector((state) => state.lange.lange);
 
-  const  text = useSelector((state) => state.lange[curentLange]);  
+  const text = useSelector((state) => state.lange[curentLange]);
 
   let [cart, setCart] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  
+
 
 
 
@@ -35,8 +35,8 @@ export default function Cart() {
 
 
     setCart(data)
-    dispatch(setCartCount(data?.numOfCartItems || 0)); // ✅ Update Redux cart count
-    
+
+
 
 
   }
@@ -94,25 +94,25 @@ export default function Cart() {
 
           <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
             <div className="mb-2 flex justify-between">
-              <p className="text-gray-700">Subtotal</p>
+              <p className="text-gray-700">{text.Subtotal}</p>
               <p className="text-gray-700">{cart?.data.totalCartPrice} EGP</p>
             </div>
             <div className="flex justify-between">
-              <p className="text-gray-700">Shipping</p>
+              <p className="text-gray-700">{text.Shipping}</p>
               <p className="text-gray-700">0 EGP</p>
             </div>
             <hr className="my-4" />
             <div className="flex justify-between">
-              <p className="text-lg font-bold">Total</p>
+              <p className="text-lg font-bold">{text.Total}</p>
               <div className="">
                 <p className="mb-1 text-lg font-bold">{cart?.data.totalCartPrice} EGP</p>
                 <p className="text-sm my-3 text-gray-700">including VAT</p>
               </div>
             </div>
-            <Link to={'/shippingaddress/' + cart?.data._id} className="text-black mt-5 pr-30 pl-30 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">{text.Checkout}</Link>
+            <div className="cursor-pointer text-black mt-5 pr-30 pl-30 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">{text.Checkout}</div>
           </div>
         </div>
-        <button onClick={deleteUserCart} className='text-red-500 border-2 m-auto border-red-500 block ms-auto py-2 px-4 mb-8 mt-4'> {text.Clearcart}</button>
+        <button onClick={deleteUserCart} className=' cursor-pointer text-red-500 border-2 m-auto border-red-500 block ms-auto py-2 px-4 mb-8 mt-4'> {text.Clearcart}</button>
 
       </div> : <h1 className='text-black mt-28 text-center font-bold'>{text.Noproductsinyourcart}</h1>}</>
 

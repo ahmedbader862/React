@@ -14,7 +14,7 @@ export default function CategoryProducts() {
   const curentLange = useSelector((state) => state.lange.lange);
 
   const text = useSelector((state) => state.lange[curentLange]);
-  const { categoryId, categoryName } = useParams(); // Get categoryId and categoryName from URL
+  const { categoryId, categoryName } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);

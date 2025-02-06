@@ -12,7 +12,7 @@ export default function SearchBar({ onSearch }) {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setQuery(value);
-    onSearch(value); // Search as user types
+    onSearch(value); 
   };
 
   return (
@@ -22,7 +22,7 @@ export default function SearchBar({ onSearch }) {
         className="form-control w-1/2 p-2 border rounded-md"
         placeholder= {text.search}
         value={query}
-        onChange={handleInputChange} // Trigger search on input change
+        onChange={handleInputChange}
       />
     </div>
   );

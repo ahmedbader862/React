@@ -54,8 +54,8 @@ export default function ProductCard({productInfo}) {
         </Link>
                                                           {/*$$$ add To Watch List $$$*/}
         <button onClick={handleAddToWatchList}>       
-        <i className={`fa-regular fa-heart fav text-2xl ${isAdded ? 'bg-red-500' : ''}`}></i>
-             </button>
+        <i className={`text-2xl fav ${isAdded ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}></i>
+        </button>
 
         </div>
         <div className="p-3  ">
