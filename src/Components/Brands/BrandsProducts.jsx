@@ -60,7 +60,7 @@ export default function BrandProducts() {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500 mt-6">No products found for this brand.</p>
+          <p className="text-center text-gray-500 mt-6">{text.Noproductsfoundforthisbrand}</p>
         )}
       </div>
     </div>

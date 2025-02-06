@@ -63,7 +63,7 @@ export default function CategoryProducts() {
 
           ))
         ) : (
-          <p className="text-center text-gray-500 mt-6">No products found.</p>
+        <p className="text-center text-gray-500 mt-6">{text.Noproductsfound}</p>
         )}
       </div>
     </div>
