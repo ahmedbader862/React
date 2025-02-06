@@ -17,6 +17,7 @@ import Products from "./Pages/Products";
 import Brands from "./Components/Brands/Brands";
 import BrandProducts from "./Components/Brands/BrandsProducts";
 import Admin from "./Pages/Admin";
+import Footer from "./Components/Footer/Footer";
 // import ShippingAddress from "./Components/ShippingAdress/ShippingAdress";
 
 
@@ -48,7 +49,10 @@ function App() {
           
 
         </Routes>
+        {/* <Footer></Footer> */}
       </Router>
+
+      
       <ToastContainer />
     </AuthContextProvider>
   );
