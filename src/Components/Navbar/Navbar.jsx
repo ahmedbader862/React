@@ -45,7 +45,9 @@ function Navbar() {
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to='/' className="flex items-center space-x-3 rtl:space-x-reverse">
 
-          <h1 className="text-3xl font-bold text-black">QuickCart</h1>
+          <h1 className="text-3xl font-bold text-black">
+          <i className="text-black hover:text-black text-2xl mt-2 me-1 fa-solid fa-cart-shopping"></i>
+            QuickCart</h1>
 
           </Link>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
