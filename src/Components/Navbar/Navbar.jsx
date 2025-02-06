@@ -118,9 +118,7 @@ function Navbar() {
 
           {isLogin && <Link to="/cart" className="cart md:order-3 relative">
             <i className="text-black hover:text-black text-2xl mt-2 fa-solid fa-cart-shopping"></i>
-            <span className="bg-black text-white h-4 w-4 font-bold text-sm flex justify-center items-center rounded-full absolute pb-0.5 top-0 right-0 translate-x-1/2 -translate-y-1/2">
-              0
-            </span>
+           
           </Link>}
         </div>
 

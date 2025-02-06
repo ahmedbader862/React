@@ -22,7 +22,7 @@ export default function Login() {
 
   let navigate = useNavigate()
   let { setLogin } = useContext(auth)
-  // let [Loading, setLoading] = useState(false)
+  
   let [msg, setMsg] = useState('')
 
 

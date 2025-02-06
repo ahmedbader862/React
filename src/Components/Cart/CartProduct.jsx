@@ -12,9 +12,9 @@ export default function CartProduct({ product, setCart, cart }) {
     const [isDecreaseLoading, setIsDecreaseLoading] = useState(false)
     const [isRemoving, setIsRemoving] = useState(false)
 
-    // Function to remove product from cart
+
     async function removeCart(productId) {
-        // Show confirmation dialog
+
         const result = await Swal.fire({
             title: 'Are you sure?',
             text: 'You are about to remove this product from your cart. This action cannot be undone!',
@@ -25,10 +25,10 @@ export default function CartProduct({ product, setCart, cart }) {
             confirmButtonText: 'Yes, remove it!',
             cancelButtonText: 'Cancel',
         });
-    
-        // If user confirms, proceed with removal
+
+
         if (result.isConfirmed) {
-            setIsRemoving(true); // Show loading for removal
+            setIsRemoving(true);
             try {
                 let { data } = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`, {
                     headers: {
@@ -36,11 +36,11 @@ export default function CartProduct({ product, setCart, cart }) {
                     },
                 });
                 setCart(data);
-    
-                // Show success message
-               
+
+
+
             } catch (error) {
-                // Show error message
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Failed to remove product',
@@ -54,13 +54,13 @@ export default function CartProduct({ product, setCart, cart }) {
                     timerProgressBar: true,
                 });
             } finally {
-                setIsRemoving(false); // Hide loading after completion
+                setIsRemoving(false);
             }
         }
     }
-    // Function to update product count in cart
+
     async function updateCount(productId, newCount) {
-        if (newCount === product.count || newCount < 1) return  // Prevent unnecessary requests
+        if (newCount === product.count || newCount < 1) return
 
         if (newCount > product.count) {
             setIsIncreaseLoading(true)
@@ -100,24 +100,24 @@ export default function CartProduct({ product, setCart, cart }) {
                 </div>
                 <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                     <div className="flex items-center border-gray-100">
-                        <button 
-                            disabled={product.count === 1 || isDecreaseLoading} 
-                            onClick={() => updateCount(product.product._id, product.count - 1)} 
+                        <button
+                            disabled={product.count === 1 || isDecreaseLoading}
+                            onClick={() => updateCount(product.product._id, product.count - 1)}
                             className="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 disabled:cursor-not-allowed hover:bg-blue-500 hover:text-blue-50"
                         >
                             {isDecreaseLoading ? <i className='fas fa-spinner fa-spin'></i> : '-'}
                         </button>
-                        <input 
-                            onBlur={() => product.count !== productCount && updateCount(product.product._id, productCount)} 
-                            onChange={(e) => setProductCount(parseInt(e.target.value) || 1)} 
-                            className="h-8 w-8 bg-white text-center text-xs outline-none" 
-                            type="number" 
-                            value={productCount} 
-                            min="1" 
+                        <input
+                            onBlur={() => product.count !== productCount && updateCount(product.product._id, productCount)}
+                            onChange={(e) => setProductCount(e.target.value)}
+                            className="h-8 w-8 bg-white text-center text-xs outline-none"
+
+                            value={productCount}
+
                         />
-                        <button 
-                            disabled={isIncreaseLoading} 
-                            onClick={() => updateCount(product.product._id, product.count + 1)} 
+                        <button
+                            disabled={isIncreaseLoading}
+                            onClick={() => updateCount(product.product._id, product.count + 1)}
                             className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
                         >
                             {isIncreaseLoading ? <i className='fas fa-spinner fa-spin'></i> : '+'}
@@ -125,13 +125,13 @@ export default function CartProduct({ product, setCart, cart }) {
                     </div>
                     <div className="flex items-center space-x-4">
                         <p className="text-sm">{product?.price * product?.count} EGP</p>
-                        <svg 
-                            onClick={() => removeCart(product.product._id)} 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
-                            strokeWidth="1.5" 
-                            stroke="currentColor" 
+                        <svg
+                            onClick={() => removeCart(product.product._id)}
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
                             className={`h-5 w-5 cursor-pointer duration-150 ${isRemoving ? 'text-gray-400' : 'hover:text-red-500'}`}
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -142,3 +142,5 @@ export default function CartProduct({ product, setCart, cart }) {
         </div>
     )
 }
+
+

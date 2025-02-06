@@ -26,7 +26,7 @@ export async function addToCart(productId) {
       transition: Bounce,
     });
 
-    return data; // Return data in case you need it in the component
+    return data; 
   } catch (error) {
     if (error.response) {
       
@@ -71,6 +71,6 @@ export async function addToCart(productId) {
       });
     }
 
-    throw error; // Rethrow the error for further handling if needed
+    throw error; 
   }
 }

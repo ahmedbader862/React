@@ -35,5 +35,9 @@ const english = {
     Logout: "Logout",
     Noproductsfoundforthisbrand: "No products found for this brand",
     Noproductsfound: "No products found",
+    Clearcart: "Clear cart",
+    Subtotal: "Subtotal",
+    shipping: "Shipping",
+    Total: "Total",
 }
 export default english
