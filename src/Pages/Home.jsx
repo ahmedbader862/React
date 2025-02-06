@@ -34,7 +34,7 @@ export default function Home() {
         setProducts(data.data);
         setFilteredProducts(data.data);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error( error);
       }
     }
     getProducts();
@@ -42,18 +42,19 @@ export default function Home() {
 
   const categories = [...new Set(products.map((product) => product.category?.name))];
 
-  const handleSearch = (query) => {
-    if (!query.trim()) {
-      setFilteredProducts(products);
+  // search
+  const handleSearch = (e) => {
+    if (!e) {
+      setProducts(products);
     } else {
       const filtered = products.filter((product) =>
-        product.title.toLowerCase().includes(query.toLowerCase())
+        product.title.toLowerCase().includes(e.toLowerCase())
       );
-      setFilteredProducts(filtered);
+      setProducts(filtered);
     }
-    setPage(1);
   };
 
+  // filter
   useEffect(() => {
     let filtered = products;
 
@@ -70,9 +71,9 @@ export default function Home() {
     }
 
     setFilteredProducts(filtered);
-    setPage(1);
   }, [selectedCategory, priceRange, products]);
 
+  // pagination
   const productsPerPage = Math.ceil(filteredProducts.length / 2);
   const startIndex = (page - 1) * productsPerPage;
   const displayedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
@@ -83,7 +84,7 @@ export default function Home() {
         <Welcome />
         <NewProducts/>
     <SearchBar onSearch={handleSearch} /> 
-
+    {/* categories */}
       <div className="my-4">
         <label htmlFor="category" className="mr-2">{text.FilterbyCategory}</label>
         <select
