@@ -29,6 +29,13 @@ const arabic = {
     AllBrands: "كل الماركات",
     Productsby: "المنتجات حسب",
     ProductsIn: "المنتجات في",
+    CartItems: "عناصر العربه",
+    Noproductsinyourcart: "لا توجد منتجات في عربتك",
+    Checkout: "الدفع",
+    Clearcart: "مسح العربه",
+    Logout: "تسجيل الخروج",
+    Noproductsfoundforthisbrand: "لم يتم العثور علي منتجات لهذه الماركه",
+    Noproductsfound: "لم يتم العثور علي منتجات",
 
 
    

@@ -7,7 +7,11 @@ import SearchBar from "../Components/SearchBar/SearchBar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
+<<<<<<< HEAD
 import NewProducts from "../Components/NewProducts/NewProducts";
+=======
+import '../index.css';
+>>>>>>> 8b10de2609dac42793f700d51edc7c3cb154d97f
 
 export default function Home() {
 
@@ -78,7 +82,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="container mx-auto w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
+      <div className="container mx-auto w-full flex flex-col justify-center items-center  ">
         <Welcome />
         <NewProducts/>
     <SearchBar onSearch={handleSearch} /> {/* Add Search Bar */}
@@ -140,7 +144,7 @@ export default function Home() {
       </div>
 
         {/* Styled Pagination */}
-        <div className="d-flex align-items-center justify-center mt-10">
+        <div className="flex items-center justify-center mt-10">
           <div className="pagination text-center">
             <button
               className="btn btn-warning mx-2"

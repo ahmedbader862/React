@@ -17,7 +17,11 @@ import Products from "./Pages/Products";
 import Brands from "./Components/Brands/Brands";
 import BrandProducts from "./Components/Brands/BrandsProducts";
 import Admin from "./Pages/Admin";
+<<<<<<< HEAD
 import Error from "./Pages/Error";
+=======
+import Footer from "./Components/Footer/Footer";
+>>>>>>> 8b10de2609dac42793f700d51edc7c3cb154d97f
 // import ShippingAddress from "./Components/ShippingAdress/ShippingAdress";
 
 
@@ -50,7 +54,10 @@ function App() {
           
 
         </Routes>
+        {/* <Footer></Footer> */}
       </Router>
+
+      
       <ToastContainer />
     </AuthContextProvider>
   );
