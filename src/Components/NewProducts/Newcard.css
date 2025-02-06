@@ -1,0 +1,7 @@
+.product-card {
+    position: relative;
+}
+.new{
+    position: absolute;
+    top: 5px;
+}

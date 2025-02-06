@@ -7,6 +7,7 @@ import SearchBar from "../Components/SearchBar/SearchBar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
+import NewProducts from "../Components/NewProducts/NewProducts";
 
 export default function Home() {
 
@@ -79,6 +80,7 @@ export default function Home() {
     <>
       <div className="container mx-auto w-full flex flex-col justify-center items-center pb-[240px] pt-[50px] pr-[35px] pl-[35px]">
         <Welcome />
+        <NewProducts/>
     <SearchBar onSearch={handleSearch} /> {/* Add Search Bar */}
 
       <div className="my-4">
