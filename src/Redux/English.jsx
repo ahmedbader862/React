@@ -7,7 +7,7 @@ const english = {
     Categories: "Categories",
     Brands: "Brands",
     search: " What are you looking for",
-    add: "Add to Cart",
+    add: "Add ",
     firstName: "First name",
     emailAdress: "Email address",
     password: "Password",
