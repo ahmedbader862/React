@@ -5,15 +5,15 @@ const arabic = {
     wishlist: "المفضله",
     Products: "المنتجات",
     Categories: "الاقسام",
-    Brands : "الماركات",
-    search : "ما الذي تبحث عنه",
-    add: "الاضافه الي العربه",
+    Brands: "الماركات",
+    search: "ما الذي تبحث عنه",
+    add: "الاضافه",
     firstName: "الاسم الاول",
-    emailAdress: "البريد الالكتروني", 
-    password : "كلمه المرور",
+    emailAdress: "البريد الالكتروني",
+    password: "كلمه المرور",
     confirmPassword: " تأكيد كلمه المرور",
     phoneNumber: "رقم الهاتف",
-    submit : "ارسال",
+    submit: "ارسال",
     registerNow: " انشاء حساب ",
     forgetPassword: " نسيت كلمه المرور",
     registerMS: "هل لديك حساب؟",
@@ -40,8 +40,15 @@ const arabic = {
     Subtotal: "المجموع الفرعي",
     Shipping: "الشحن",
     Total: "المجموع",
+    Admin: "المشرف",
+    HelloAdmin: "مرحبا بالمشرف",
+    ProductManager: "مدير المنتجات",
+    ProductName: "اسم المنتج",
+    Category: "الفئة",
+    Image: "الصورة",
+    Price: "السعر",
 
 
-   
+
 }
 export default arabic

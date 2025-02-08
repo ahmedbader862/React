@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import ProductCard from "../Components/ProductCard/ProductCard";
 import Loading from "../Components/Loading";
+import { Helmet } from "react-helmet";
 
 export default function Products() {
     const [products,setProducts] = useState(null);
@@ -21,6 +22,11 @@ export default function Products() {
 
   return (
     <>
+        <Helmet>
+        <title>Products</title>
+    </Helmet>
+    
+
     <div className="container mx-auto px-10">
         
     {products ? (<div className='grid grid-cols-12 gap-4 mt-16'>

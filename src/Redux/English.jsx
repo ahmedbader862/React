@@ -39,5 +39,12 @@ const english = {
     Subtotal: "Subtotal",
     shipping: "Shipping",
     Total: "Total",
+    Admin: "Admin",
+    HelloAdmin: "Hello Admin",
+    ProductManager: "Product Manager",
+    ProductName: "Product Name",
+    Category: "Category",
+    Image: "Image",
+    Price: "Price",
 }
 export default english

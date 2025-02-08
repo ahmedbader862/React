@@ -9,6 +9,7 @@ import "aos/dist/aos.css";
 import { useSelector } from "react-redux";
 import NewProducts from "../Components/NewProducts/NewProducts";
 import '../index.css';
+import { Helmet } from "react-helmet";
 
 export default function Home() {
 
@@ -79,7 +80,13 @@ export default function Home() {
   const displayedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
 
   return (
+    
     <>
+   
+   <Helmet>
+        <title>Home</title>
+    </Helmet>
+    
       <div className="container mx-auto w-full flex flex-col justify-center items-center  ">
         <Welcome />
         <NewProducts/>
