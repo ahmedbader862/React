@@ -92,61 +92,70 @@ export default function Home() {
         <NewProducts/>
     <SearchBar onSearch={handleSearch} /> 
     {/* categories */}
-      <div className="my-4">
-        <label htmlFor="category" className="mr-2">{text.FilterbyCategory}</label>
-        <select
-          id="category"
-          value={selectedCategory}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-          className="p-2 border rounded"
-        >
-          <option value="">{text.AllCategories}</option>
-          {categories.map((category) => (
-            <option key={category} value={category}>{category}</option>
-          ))}
-        </select>
-      </div>
+    <div className="my-4 flex flex-col sm:flex-row items-center gap-2">
+  <label htmlFor="category" className="text-sm sm:text-base">
+    {text.FilterbyCategory}
+  </label>
+  <select
+    id="category"
+    value={selectedCategory}
+    onChange={(e) => setSelectedCategory(e.target.value)}
+    className="p-2 border rounded w-full sm:w-auto"
+  >
+    <option value="">{text.AllCategories}</option>
+    {categories.map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
+    ))}
+  </select>
+</div>
 
-      <div className="my-4">
-        <label htmlFor="minPrice" className="mr-2">{text.MinPrice}:</label>
-        <input
-          id="minPrice"
-          type="number"
-          value={priceRange.min === null ? "" : priceRange.min}
-          onChange={(e) =>
-            setPriceRange({
-              ...priceRange,
-              min: e.target.value === "" ? null : Number(e.target.value),
-            })
-          }
-          className="p-2 border rounded mr-4"
-        />
-        <label htmlFor="maxPrice" className="mr-2">{text.MaxPrice}:</label>
-        <input
-          id="maxPrice"
-          type="number"
-          value={priceRange.max === Infinity ? "" : priceRange.max}
-          onChange={(e) =>
-            setPriceRange({
-              ...priceRange,
-              max: e.target.value === "" ? Infinity : Number(e.target.value),
-            })
-          }
-          className="p-2 border rounded"
-        />
-      </div>
+<div className="my-4 flex flex-col sm:flex-row items-center gap-2">
+  <label htmlFor="minPrice" className="text-sm sm:text-base">
+    {text.MinPrice}:
+  </label>
+  <input
+    id="minPrice"
+    type="number"
+    value={priceRange.min === null ? "" : priceRange.min}
+    onChange={(e) =>
+      setPriceRange({
+        ...priceRange,
+        min: e.target.value === "" ? null : Number(e.target.value),
+      })
+    }
+    className="p-2 border rounded w-full sm:w-24"
+  />
+  <label htmlFor="maxPrice" className="text-sm sm:text-base">
+    {text.MaxPrice}:
+  </label>
+  <input
+    id="maxPrice"
+    type="number"
+    value={priceRange.max === Infinity ? "" : priceRange.max}
+    onChange={(e) =>
+      setPriceRange({
+        ...priceRange,
+        max: e.target.value === "" ? Infinity : Number(e.target.value),
+      })
+    }
+    className="p-2 border rounded w-full sm:w-24"
+  />
+</div>
 
-      <div className="products mx-10">
-        {displayedProducts.length > 0 ? (
-          <div className="grid grid-cols-12 gap-4">
-            {displayedProducts.map((product) => (
-              <ProductCard key={product.id} productInfo={product} />
-            ))}
-          </div>
-        ) : (
-          <Loading />
-        )}
-      </div>
+<div className="products mx-4 sm:mx-10">
+  {displayedProducts.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {displayedProducts.map((product) => (
+        <ProductCard key={product.id} productInfo={product} />
+      ))}
+    </div>
+  ) : (
+    <Loading />
+  )}
+</div>
+
 
         
         <div className="flex items-center justify-center mt-10">
