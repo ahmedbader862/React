@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import Admincard from "../Components/Admincard/Admincard";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Admin = () => {
+  const curentLange = useSelector((state) => state.lange.lange);
+ 
+
+
+  const text = useSelector((state) => state.lange[curentLange]);
   const [products, setProducts] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -55,38 +63,61 @@ const Admin = () => {
     setEditIndex(index);
   };
 
+ 
+
   const handleDelete = (index) => {
-    const updatedProducts = products.filter((product, currentIndex) => currentIndex !== index);
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const updatedProducts = products.filter((product, currentIndex) => currentIndex !== index);
+        setProducts(updatedProducts);
+        localStorage.setItem("products", JSON.stringify(updatedProducts));
+  
+        Swal.fire("Deleted!", "Your product has been deleted.", "success");
+      }
+    });
   };
+  
+ 
 
   return (
+    <>
+    
+    <Helmet>
+      <title>Admin</title>
+    </Helmet>
     <div className="flex items-center justify-center flex-col">
-      <h1 className="text-center mt-5 font-bold text-4xl">Hello, Admin</h1>
-      <h3 className="my-8">Product Manager</h3>
+      <h1 className="text-center mt-5 font-bold text-4xl">{text.HelloAdmin}</h1>
+      <h3 className="my-8">{text.ProductManager}</h3>
       <form className="flex flex-col w-200" onSubmit={handleSubmit}>
-        <label>Product Name</label>
+        <label>{text.ProductName}</label>
         <input
           type="text"
           name="name"
-          placeholder="Product Name"
+          placeholder={text.ProductName}
           value={formData.name}
           onChange={handleInputChange}
           required
           className="border-1 p-1 my-2"
         />
-        <label>Category</label>
+        <label>{text.Category}</label>
         <input
           type="text"
           name="category"
-          placeholder="Category"
+          placeholder={text.Category}
           value={formData.category}
           onChange={handleInputChange}
           required
           className="border-1 p-1 my-2"
         />
-        <label>Image</label>
+        <label>{text.Image}</label>
         <input
           type="file"
           name="image"
@@ -95,11 +126,11 @@ const Admin = () => {
           required
           className="border-1 p-1 my-2"
         />
-        <label>Price</label>
+        <label>{text.Price}</label>
         <input
           type="number"
           name="price"
-          placeholder="Price"
+          placeholder={text.Price}
           value={formData.price}
           onChange={handleInputChange}
           required
@@ -115,18 +146,21 @@ const Admin = () => {
         </div>
       </form>
 
-      <div className="grid grid-cols-3 gap-4">
-        {products.map((product, index) => (
-          <Admincard
-            key={index}
-            product={product}
-            onEdit={handleEdit}
-            onDelete={handleDelete}
-            index={index}
-          />
-        ))}
-      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {products.map((product, index) => (
+    <Admincard
+      key={index}
+      product={product}
+      onEdit={handleEdit}
+      onDelete={handleDelete}
+      index={index}
+    />
+  ))}
+</div>
+
+
     </div>
+    </>
   );
 };
 

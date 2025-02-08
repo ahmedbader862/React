@@ -27,25 +27,22 @@ export default function Login() {
 
 
 function handleLogin(values) {
-    if (values.email === "admin@gmail.com" && values.password === "A12345") {  // اصحالي يا برنس
-        navigate('/admin');
-   
-      }
-    
-    
-    
-    else {
-        axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', values)
-            .then(({ data }) => {
-                setMsg('');
-                localStorage.setItem('userToken', data.token);
-                setLogin(data.token);
-                navigate('/');
-            })
-            .catch((err) => {
-                setMsg(err?.response?.data?.message);
-            });
-    }
+  if (values.email === "admin@gmail.com" && values.password === "A12345") {
+    localStorage.setItem("isAdmin", "true");  // Store admin status
+    navigate('/admin');
+  } else {
+    localStorage.removeItem("isAdmin");  // Remove admin status if not admin
+    axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', values)
+        .then(({ data }) => {
+            setMsg('');
+            localStorage.setItem('userToken', data.token);
+            setLogin(data.token);
+            navigate('/');
+        })
+        .catch((err) => {
+            setMsg(err?.response?.data?.message);
+        });
+  }
 }
 
 
