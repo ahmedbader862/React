@@ -29,7 +29,7 @@ export default function Products() {
 
     <div className="container mx-auto px-10">
         
-    {products ? (<div className='grid grid-cols-12 gap-4 mt-16'>
+    {products ? (<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-16'>
             { products.map((product)=>(
             <ProductCard productInfo ={product}/>
         ))} 

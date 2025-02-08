@@ -93,73 +93,78 @@ const Admin = () => {
     <Helmet>
       <title>Admin</title>
     </Helmet>
-    <div className="flex items-center justify-center flex-col">
-      <h1 className="text-center mt-5 font-bold text-4xl">{text.HelloAdmin}</h1>
-      <h3 className="my-8">{text.ProductManager}</h3>
-      <form className="flex flex-col w-200" onSubmit={handleSubmit}>
-        <label>{text.ProductName}</label>
-        <input
-          type="text"
-          name="name"
-          placeholder={text.ProductName}
-          value={formData.name}
-          onChange={handleInputChange}
-          required
-          className="border-1 p-1 my-2"
-        />
-        <label>{text.Category}</label>
-        <input
-          type="text"
-          name="category"
-          placeholder={text.Category}
-          value={formData.category}
-          onChange={handleInputChange}
-          required
-          className="border-1 p-1 my-2"
-        />
-        <label>{text.Image}</label>
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={handleInputChange}
-          required
-          className="border-1 p-1 my-2"
-        />
-        <label>{text.Price}</label>
-        <input
-          type="number"
-          name="price"
-          placeholder={text.Price}
-          value={formData.price}
-          onChange={handleInputChange}
-          required
-          className="border-1 p-1 my-2"
-        />
-        <div className="btn-holder text-center my-3">
-          <button
-            type="submit"
-            className="text-black pr-37 pl-37 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-          >
-            {editIndex !== null ? "Update Product" : "Add Product"}
-          </button>
-        </div>
-      </form>
+    <div className="flex items-center justify-center flex-col px-4">
+  <h1 className="text-center mt-5 font-bold text-3xl sm:text-4xl">{text.HelloAdmin}</h1>
+  <h3 className="my-6 text-lg sm:text-xl">{text.ProductManager}</h3>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  {products.map((product, index) => (
-    <Admincard
-      key={index}
-      product={product}
-      onEdit={handleEdit}
-      onDelete={handleDelete}
-      index={index}
+  <form className="flex flex-col w-full max-w-lg" onSubmit={handleSubmit}>
+    <label className="font-medium">{text.ProductName}</label>
+    <input
+      type="text"
+      name="name"
+      placeholder={text.ProductName}
+      value={formData.name}
+      onChange={handleInputChange}
+      required
+      className="border p-2 my-2 rounded w-full"
     />
-  ))}
+
+    <label className="font-medium">{text.Category}</label>
+    <input
+      type="text"
+      name="category"
+      placeholder={text.Category}
+      value={formData.category}
+      onChange={handleInputChange}
+      required
+      className="border p-2 my-2 rounded w-full"
+    />
+
+    <label className="font-medium">{text.Image}</label>
+    <input
+      type="file"
+      name="image"
+      accept="image/*"
+      onChange={handleInputChange}
+      required
+      className="border p-2 my-2 rounded w-full"
+    />
+
+    <label className="font-medium">{text.Price}</label>
+    <input
+      type="number"
+      name="price"
+      placeholder={text.Price}
+      value={formData.price}
+      onChange={handleInputChange}
+      required
+      className="border p-2 my-2 rounded w-full"
+    />
+
+    <div className="text-center my-4">
+      <button
+        type="submit"
+        className="text-black bg-transparent border border-black hover:bg-black hover:text-white transition duration-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-6 py-2.5"
+      >
+        {editIndex !== null ? "Update Product" : "Add Product"}
+      </button>
+    </div>
+  </form>
+
+  {/* Product Grid */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full max-w-6xl mt-6">
+    {products.map((product, index) => (
+      <Admincard
+        key={index}
+        product={product}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        index={index}
+      />
+    ))}
+  </div>
 </div>
 
-
-    </div>
     </>
   );
 };

@@ -76,6 +76,7 @@ export default function Home() {
     <>
       <div className="container mx-auto w-full flex flex-col justify-center items-center">
         <Welcome />
+<<<<<<< HEAD
         <NewProducts />
         <SearchBar onSearch={search} />
 
@@ -92,6 +93,94 @@ export default function Home() {
               <option key={category} value={category}>{category}</option>
             ))}
           </select>
+=======
+        <NewProducts/>
+    <SearchBar onSearch={handleSearch} /> 
+    {/* categories */}
+    <div className="my-4 flex flex-col sm:flex-row items-center gap-2">
+  <label htmlFor="category" className="text-sm sm:text-base">
+    {text.FilterbyCategory}
+  </label>
+  <select
+    id="category"
+    value={selectedCategory}
+    onChange={(e) => setSelectedCategory(e.target.value)}
+    className="p-2 border rounded w-full sm:w-auto"
+  >
+    <option value="">{text.AllCategories}</option>
+    {categories.map((category) => (
+      <option key={category} value={category}>
+        {category}
+      </option>
+    ))}
+  </select>
+</div>
+
+<div className="my-4 flex flex-col sm:flex-row items-center gap-2">
+  <label htmlFor="minPrice" className="text-sm sm:text-base">
+    {text.MinPrice}:
+  </label>
+  <input
+    id="minPrice"
+    type="number"
+    value={priceRange.min === null ? "" : priceRange.min}
+    onChange={(e) =>
+      setPriceRange({
+        ...priceRange,
+        min: e.target.value === "" ? null : Number(e.target.value),
+      })
+    }
+    className="p-2 border rounded w-full sm:w-24"
+  />
+  <label htmlFor="maxPrice" className="text-sm sm:text-base">
+    {text.MaxPrice}:
+  </label>
+  <input
+    id="maxPrice"
+    type="number"
+    value={priceRange.max === Infinity ? "" : priceRange.max}
+    onChange={(e) =>
+      setPriceRange({
+        ...priceRange,
+        max: e.target.value === "" ? Infinity : Number(e.target.value),
+      })
+    }
+    className="p-2 border rounded w-full sm:w-24"
+  />
+</div>
+
+<div className="products mx-4 sm:mx-10">
+  {displayedProducts.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {displayedProducts.map((product) => (
+        <ProductCard key={product.id} productInfo={product} />
+      ))}
+    </div>
+  ) : (
+    <Loading />
+  )}
+</div>
+
+
+        
+        <div className="flex items-center justify-center mt-10">
+          <div className="pagination text-center">
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              {text.previous}
+            </button>
+            <span className="mx-3">{text.page} {page} {text.of} {totalPages}</span>
+            <button
+              className="btn btn-warning mx-2"
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages}
+            >
+              {text.next}
+            </button>
+>>>>>>> 63567b2169edd9a21233ea761f68aa380eebced1
         </div>
 
         <div className="my-4">
