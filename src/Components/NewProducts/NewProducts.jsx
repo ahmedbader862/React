@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import './Newcard.css'
+import "./Newcard.css";
 
 const ProductDisplayPage = () => {
   const [products, setProducts] = useState([]);
 
-  // Load products from localStorage on component mount
   useEffect(() => {
     const storedProducts = localStorage.getItem("products");
     if (storedProducts) {
@@ -18,15 +17,15 @@ const ProductDisplayPage = () => {
       {products.length === 0 ? (
         <p>No products available</p>
       ) : (
-        <div className="product-grid shadow-2xl p-4 rounded-2xl">
+        <div className="flex ">
           {products.map((product, index) => (
-            <div key={index} className="product-card ">
-              <img src={product.image} alt={product.name} />
-              <h3 className="text-lg font-medium">{product.name}</h3>
-              <p className="text-lg"> {product.category}</p>
-              <p className="text-lg">{product.price}L.E</p>
+            <div key={index} className="product-card shadow-lg p-4 rounded-2xl m-4 bg-white">
+              <img className="product-image" src={product.image} alt={product.name} />
+              <h3 className="text-lg font-medium mt-2">{product.name}</h3>
+              <p className="text-gray-600">{product.category}</p>
+              <p className="text-lg font-bold">{product.price} L.E</p>
               <div className="new">
-                <label className="bg-black text-white p-2 rounded-2xl">New</label>
+                <label className="bg-black text-white px-3 py-1 rounded-2xl text-sm">New</label>
               </div>
             </div>
           ))}
