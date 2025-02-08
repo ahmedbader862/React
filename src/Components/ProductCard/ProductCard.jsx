@@ -47,7 +47,7 @@ export default function ProductCard({productInfo}) {
     return (
     <>
 
-    <div   className="lg:col-span-3 md:col-span-6 sm:col-span-12 drop-shadow-xl hover:-translate-y-4 transition-[0.3] shadow-lg hover:shadow-primary rounded-md overflow-hidden mt-10">
+    <div   className=" drop-shadow-xl hover:-translate-y-4 transition-[0.3] shadow-lg hover:shadow-primary rounded-md overflow-hidden mt-10">
         <div className="relative">
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
