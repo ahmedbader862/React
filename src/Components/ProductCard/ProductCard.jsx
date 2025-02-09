@@ -47,7 +47,7 @@ export default function ProductCard({productInfo}) {
     return (
     <>
 
-    <div   className=" drop-shadow-xl hover:-translate-y-4 transition-[0.3] shadow-lg hover:shadow-primary rounded-md overflow-hidden mt-10">
+    <div   className=" drop-shadow-xl hover:-translate-y-4 transition-[0.3] shadow-lg  hover:shadow-primary rounded-md overflow-hidden mt-10">
         <div className="relative">
         <Link to={`product/${id}`}>
         <img src={images[0]} className="w-full card-img object-fill"/>
@@ -69,8 +69,8 @@ export default function ProductCard({productInfo}) {
                 </div>
                 
             </div>
-            <div className="flex justify-around items-center mt-3">
-                    <button onClick={()=>addToCart(id,userToken)} type="button" className="text-black pr-20 pl-20 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+            <div className="flex justify-around items-center mt-3 w-full">
+                    <button onClick={()=>addToCart(id,userToken)} type="button" className="w-full text-black pr-20 pl-20 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                     {text.add}</button>
 
                         
