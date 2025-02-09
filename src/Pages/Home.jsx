@@ -149,7 +149,7 @@ export default function Home() {
   />
 </div>
 
-<div className="products mx-4 sm:mx-10">
+<div className="pzroducts mx-4 sm:mx-10">
   {displayedProducts.length > 0 ? (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {displayedProducts.map((product) => (
