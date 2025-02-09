@@ -97,34 +97,40 @@ export default function Home() {
           </select>
         </div>
 
-        <div className="my-4">
-          <label htmlFor="minPrice" className="mr-2">{text.MinPrice}:</label>
-          <input
-            id="minPrice"
-            type="number"
-            value={priceRange.min === null ? "" : priceRange.min}
-            onChange={(e) =>
-              setPriceRange({
-                ...priceRange,
-                min: e.target.value === "" ? null : Number(e.target.value),
-              })
-            }
-            className="p-2 border rounded mr-4"
-          />
-          <label htmlFor="maxPrice" className="mr-2">{text.MaxPrice}:</label>
-          <input
-            id="maxPrice"
-            type="number"
-            value={priceRange.max === Infinity ? "" : priceRange.max}
-            onChange={(e) =>
-              setPriceRange({
-                ...priceRange,
-                max: e.target.value === "" ? Infinity : Number(e.target.value),
-              })
-            }
-            className="p-2 border rounded"
-          />
-        </div>
+        <div className="my-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+  <div className="flex items-center gap-2 w-full sm:w-auto">
+    <label htmlFor="minPrice" className="whitespace-nowrap">{text.MinPrice}:</label>
+    <input
+      id="minPrice"
+      type="number"
+      value={priceRange.min === null ? "" : priceRange.min}
+      onChange={(e) =>
+        setPriceRange({
+          ...priceRange,
+          min: e.target.value === "" ? null : Number(e.target.value),
+        })
+      }
+      className="p-2 border rounded w-full sm:w-32"
+    />
+  </div>
+  
+  <div className="flex items-center gap-2 w-full sm:w-auto">
+    <label htmlFor="maxPrice" className="whitespace-nowrap">{text.MaxPrice}:</label>
+    <input
+      id="maxPrice"
+      type="number"
+      value={priceRange.max === Infinity ? "" : priceRange.max}
+      onChange={(e) =>
+        setPriceRange({
+          ...priceRange,
+          max: e.target.value === "" ? Infinity : Number(e.target.value),
+        })
+      }
+      className="p-2 border rounded w-full sm:w-32"
+    />
+  </div>
+</div>
+
 
         <div className="products mx-10">
           {displayedProducts.length > 0 ? (
@@ -138,22 +144,56 @@ export default function Home() {
           )}
         </div>
 
-        <nav id="pagenation" aria-label="Page navigation example">
-          <ul className="pagination flex gap-2 mt-10">
-            <li className="page-item">
-              <button onClick={curentPageP} className={`page-link ${page === 1 && "disabled"}`}>Previous</button>
-            </li>
-            <li className={`page-item ${page === 1 ? "active" : ""}`}>
-              <button onClick={() => setPage(1)} className="page-link">1</button>
-            </li>
-            <li className={`page-item ${page === 2 ? "active" : ""}`}>
-              <button onClick={() => setPage(2)} className="page-link">2</button>
-            </li>
-            <li className="page-item">
-              <button onClick={curentPageN} className={`page-link ${page === totalPages && "disabled"}`}>Next</button>
-            </li>
-          </ul>
-        </nav>
+        <nav id="pagination" aria-label="Page navigation example">
+  <ul className="pagination flex gap-2 mt-10 justify-center">
+   
+    <li className="page-item">
+      <button 
+        onClick={curentPageP} 
+        disabled={page === 1} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === 1 ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
+        : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        Previous
+      </button>
+    </li>
+
+    
+    <li className={`page-item ${page === 1 ? "active" : ""}`}>
+      <button 
+        onClick={() => setPage(1)} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === 1 ? "bg-white text-black border-black" 
+        : "bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        1
+      </button>
+    </li>
+
+    
+    <li className={`page-item ${page === 2 ? "active" : ""}`}>
+      <button 
+        onClick={() => setPage(2)} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === 2 ? "bg-white text-black border-black" 
+        : "bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        2
+      </button>
+    </li>
+
+    
+    <li className="page-item">
+      <button 
+        onClick={curentPageN} 
+        disabled={page === totalPages} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === totalPages ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
+        : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>
+
       </div>
     </>
   );
