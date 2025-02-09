@@ -8,8 +8,8 @@ function WatchList() {
     return (
         
         <div>
-            <h1>allProduct</h1>
-            <div className="grid grid-cols-12 gap-4">
+            <h1 className="font-bold text-2xl text-center m-7">All fav Product</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-10">
         {allProduct.map((allProduct) => (
          <ProductCard key={allProduct.id} productInfo={allProduct} />
         ))}
