@@ -70,7 +70,7 @@ export default function ProductCard({productInfo}) {
                 
             </div>
             <div className="flex justify-around items-center mt-3 w-full">
-                    <button onClick={()=>addToCart(id,userToken)} type="button" className="w-full text-black pr-20 pl-20 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+                    <button onClick={()=>addToCart(id,userToken)} type="button" className="cursor-pointer  w-full text-black pr-20 pl-20 hover:text-white border border-black hover:bg-black transition-[0.2] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
                     {text.add}</button>
 
                         

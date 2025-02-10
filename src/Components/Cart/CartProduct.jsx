@@ -75,6 +75,7 @@ export default function CartProduct({ product, setCart, cart }) {
                 }
             })
             setCart(data)
+            // setProductCount(product.count)  bygeb al state al 2adema 3shan set cart  async function
         } catch (error) {
             toast.error("Failed to update product quantity.")
         } finally {
