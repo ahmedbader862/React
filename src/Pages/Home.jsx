@@ -79,7 +79,7 @@ export default function Home() {
     <>
       <div className="container mx-auto w-full flex flex-col justify-center items-center">
         <Welcome />
-        {/* <NewProducts /> */}
+        <NewProducts />
         <SearchBar onSearch={search} />
 
         <div className="my-4">
