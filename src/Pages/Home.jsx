@@ -79,7 +79,7 @@ export default function Home() {
     <>
       <div className="container mx-auto w-full flex flex-col justify-center items-center">
         <Welcome />
-        <NewProducts />
+        {/* <NewProducts /> */}
         <SearchBar onSearch={search} />
 
         <div className="my-4">
@@ -154,7 +154,7 @@ export default function Home() {
         className={`page-link px-4 py-2 rounded-md border transition 
         ${page === 1 ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
         : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
-        Previous
+        {text.previous}
       </button>
     </li>
 
@@ -188,7 +188,7 @@ export default function Home() {
         className={`page-link px-4 py-2 rounded-md border transition 
         ${page === totalPages ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
         : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
-        Next
+        {text.next}
       </button>
     </li>
   </ul>

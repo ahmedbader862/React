@@ -25,7 +25,6 @@ const arabic = {
     AllCategories: "كل الفئات",
     MinPrice: "الحد الادني",
     MaxPrice: "الحد الاقصي",
-    AllCategories: "كل الفئات",
     AllBrands: "كل الماركات",
     Productsby: "المنتجات حسب",
     ProductsIn: "المنتجات في",
@@ -36,7 +35,6 @@ const arabic = {
     Logout: "تسجيل الخروج",
     Noproductsfoundforthisbrand: "لم يتم العثور علي منتجات لهذه الماركه",
     Noproductsfound: "لم يتم العثور علي منتجات",
-    Clearcart: "مسح العربه",
     Subtotal: "المجموع الفرعي",
     Shipping: "الشحن",
     Total: "المجموع",
@@ -47,6 +45,7 @@ const arabic = {
     Category: "الفئة",
     Image: "الصورة",
     Price: "السعر",
+    allFav:"كل منتجاتك المفضله"
 
 
 

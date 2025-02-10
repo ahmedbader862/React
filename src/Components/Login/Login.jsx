@@ -28,10 +28,10 @@ export default function Login() {
 
 function handleLogin(values) {
   if (values.email === "admin@gmail.com" && values.password === "A12345") {
-    localStorage.setItem("isAdmin", "true");  // Store admin status
+    localStorage.setItem("isAdmin", "true");  
     navigate('/admin');
   } else {
-    localStorage.removeItem("isAdmin");  // Remove admin status if not admin
+    localStorage.removeItem("isAdmin");  
     axios.post('https://ecommerce.routemisr.com/api/v1/auth/signin', values)
         .then(({ data }) => {
             setMsg('');
@@ -136,11 +136,11 @@ function handleLogin(values) {
       {text.registerNow}
     </Link>
   </p>
-  <p className="text-center pb-5">
+  {/* <p className="text-center pb-5">
     <Link to="/forget" className="font-bold underline hover:text-gray-600">
       {text.forgetPassword}
     </Link>
-  </p>
+  </p> */}
 </div>
 
 
