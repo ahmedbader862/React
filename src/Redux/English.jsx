@@ -25,7 +25,6 @@ const english = {
     AllCategories: "All Categories",
     MinPrice: "Min Price",
     MaxPrice: "Max Price",
-    AllCategories: "All Categories",
     AllBrands: "All Brands",
     Productsby: "Products by",
     ProductsIn: "Products in",
@@ -46,5 +45,6 @@ const english = {
     Category: "Category",
     Image: "Image",
     Price: "Price",
+    allFav:"All fav Product"
 }
 export default english

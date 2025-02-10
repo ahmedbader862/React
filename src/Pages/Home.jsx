@@ -145,7 +145,18 @@ export default function Home() {
         </div>
 
         <nav id="pagination" aria-label="Page navigation example">
-          <ul className="pagination flex gap-2 mt-10 justify-center">
+  <ul className="pagination flex gap-2 mt-10 justify-center">
+   
+    <li className="page-item">
+      <button 
+        onClick={curentPageP} 
+        disabled={page === 1} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === 1 ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
+        : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        {text.previous}
+      </button>
+    </li>
 
             <li className="page-item">
               <button
@@ -159,40 +170,19 @@ export default function Home() {
             </li>
 
 
-            <li className={`page-item ${page === 1 ? "active" : ""}`}>
-              <button
-                onClick={() => setPage(1)}
-                className={`page-link px-4 py-2 rounded-md border transition 
-        ${page === 1 ? "bg-white text-black border-black"
-                    : "bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
-                1
-              </button>
-            </li>
-
-
-            <li className={`page-item ${page === 2 ? "active" : ""}`}>
-              <button
-                onClick={() => setPage(2)}
-                className={`page-link px-4 py-2 rounded-md border transition 
-        ${page === 2 ? "bg-white text-black border-black"
-                    : "bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
-                2
-              </button>
-            </li>
-
-
-            <li className="page-item">
-              <button
-                onClick={curentPageN}
-                disabled={page === totalPages}
-                className={`page-link px-4 py-2 rounded-md border transition 
-        ${page === totalPages ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700"
-                    : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+    
+    <li className="page-item">
+      <button 
+        onClick={curentPageN} 
+        disabled={page === totalPages} 
+        className={`page-link px-4 py-2 rounded-md border transition 
+        ${page === totalPages ? "cursor-not-allowed bg-gray-800 text-gray-500 border-gray-700" 
+        : "cursor-pointer bg-black text-white border-white hover:bg-gray-900 hover:border-gray-500"}`}>
+        {text.next}
+      </button>
+    </li>
+  </ul>
+</nav>
 
       </div>
     </>

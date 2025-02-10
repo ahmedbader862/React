@@ -212,11 +212,11 @@ export default function Register() {
       {text.loginNow}
     </Link>
   </p>
-  <p className="text-center pb-5">
+  {/* <p className="text-center pb-5">
     <Link to="/forget" className="font-bold underline hover:text-gray-600">
       {text.forgetPassword}
     </Link>
-  </p>
+  </p> */}
 </div>
 
         </>
