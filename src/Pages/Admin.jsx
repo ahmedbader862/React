@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Admincard from "../Components/Admincard/Admincard";
 import { useSelector } from "react-redux";
 import Swal from "sweetalert2";
@@ -7,49 +7,65 @@ import { Helmet } from "react-helmet";
 const Admin = () => {
   const curentLange = useSelector((state) => state.lange.lange);
   const text = useSelector((state) => state.lange[curentLange]);
-  
+
   const [products, setProducts] = useState(() => JSON.parse(localStorage.getItem("products")) || []);
   const [formData, setFormData] = useState({ name: "", category: "", image: "", price: "" });
   const [editIndex, setEditIndex] = useState(null);
 
-  useEffect(() => localStorage.setItem("products", JSON.stringify(products)), [products]);
+  const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   const handleInputChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "image" && files?.[0]) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => setFormData((prev) => ({ ...prev, image: e.target.result }));
-      reader.readAsDataURL(files[0]);
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
+      reader.onload = () => setFormData({ ...formData, image: reader.result });
+      reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setProducts((prev) => (editIndex !== null ? prev.map((p, i) => (i === editIndex ? formData : p)) : [...prev, formData]));
+    if (editIndex !== null) {
+      const updatedProducts = [...products];
+      updatedProducts[editIndex] = formData;
+      setProducts(updatedProducts);
+    } else {
+      setProducts([...products, formData]);
+    }
+
     setFormData({ name: "", category: "", image: "", price: "" });
     setEditIndex(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const handleEdit = (index) => {
     setFormData(products[index]);
     setEditIndex(index);
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const handleDelete = (index) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: text.areYouSure,
+      text: text.deleteWarning,
       icon: "warning",
       showCancelButton: true,
+      confirmButtonText: "Yes, Delete it!",
+      cancelButtonText: "Cancel",
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        setProducts((prev) => prev.filter((_, i) => i !== index));
-        Swal.fire("Deleted!", "Your product has been deleted.", "success");
+        setProducts(products.filter((_, i) => i !== index));
+        Swal.fire(text.deleted, text.productDeleted, "success");
       }
     });
   };
@@ -57,18 +73,34 @@ const Admin = () => {
   return (
     <>
       <Helmet>
-        <title>Admin</title>
+        <title>{text.Admin}</title>
       </Helmet>
       <div className="flex flex-col items-center px-4">
-        <h1 className="mt-5 font-bold text-3xl sm:text-4xl">{text.HelloAdmin}</h1>
-        <h3 className="my-6 text-lg sm:text-xl">{text.ProductManager}</h3>
+        <h1 className="mt-5 font-bold text-3xl">{text.HelloAdmin}</h1>
+        <h3 className="my-6 text-lg">{text.ProductManager}</h3>
 
-        <form className="flex flex-col w-full max-w-lg" onSubmit={handleSubmit}>
-          {["name", "category", "price"].map((field) => (
-            <input key={field} type={field === "price" ? "number" : "text"} name={field} placeholder={text[field]} value={formData[field]} onChange={handleInputChange} required className="border p-2 my-2 rounded w-full" />
-          ))}
-          <input type="file" name="image" accept="image/*" onChange={handleInputChange} required className="border p-2 my-2 rounded w-full" />
-          <button type="submit" className="mt-4 px-6 py-2.5 border rounded-lg text-sm transition hover:bg-black hover:text-white">
+        <form className="w-full max-w-lg space-y-3" onSubmit={handleSubmit}>
+          <div>
+            <label>{text.ProductName}</label>
+            <input type="text" name="name" placeholder={text.ProductName} value={formData.name} onChange={handleInputChange} className="border p-2 w-full rounded" required />
+          </div>
+
+          <div>
+            <label>{text.Category}</label>
+            <input type="text" name="category" placeholder={text.Category} value={formData.category} onChange={handleInputChange} className="border p-2 w-full rounded" required />
+          </div>
+
+          <div>
+            <label>{text.Price}</label>
+            <input type="number" name="price" placeholder={text.Price} value={formData.price} onChange={handleInputChange} className="border p-2 w-full rounded" required />
+          </div>
+
+          <div>
+            <label>{text.Image}</label>
+            <input type="file" name="image" accept="image/*" onChange={handleFileChange} ref={fileInputRef} className="border p-2 w-full rounded" />
+          </div>
+
+          <button type="submit" className="mt-4 px-6 py-2.5 w-full bg-black text-white rounded-lg">
             {editIndex !== null ? "Update Product" : "Add Product"}
           </button>
         </form>
