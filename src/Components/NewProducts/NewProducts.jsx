@@ -17,7 +17,7 @@ const ProductDisplayPage = () => {
       {products.length === 0 ? (
         <p>No products available</p>
       ) : (
-        <div className="flex grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-10">
           {products.map((product, index) => (
             <div key={index} className="product-card shadow-lg p-4 rounded-2xl m-4 bg-white ">
               <img className="product-image" src={product.image} alt={product.name} />
