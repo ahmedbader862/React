@@ -9,7 +9,7 @@ import Register from "./Components/Register/Register";
 import { ToastContainer } from "react-toastify";
 import Cart from "./Components/Cart/Cart";
 import ProductDetails from "./Pages/ProductDetails";
-import WatchList from "./Pages/watchlist";
+import WatchList from "./Pages/watchList";
 import Categories from "./Categories/Categories";
 import CategoryProducts from "./Categories/CategoryProducts"; // Import the new component
 import Products from "./Pages/Products";
