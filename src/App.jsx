@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home";
-import AOS from "aos";
+// import AOS from "aos";
 import "aos/dist/aos.css";
 import AuthContextProvider from "./Contexts/AuthContext";
 import Login from "./Components/Login/Login";
